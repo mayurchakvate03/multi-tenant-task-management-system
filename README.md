@@ -6,7 +6,7 @@ A backend-only Spring Boot task management API. All tenants share one H2 databas
 
 - Java 17 or newer
 - Maven 3.6.3 or newer
-- Docker only if you want to build and run the container image
+
 
 ## Run locally
 
@@ -157,5 +157,5 @@ Coverage XML is generated before the Sonar goal and is configured at `target/sit
 - Task assignment uses a user ID in the body; the service verifies that both task and user belong to the authenticated tenant before persisting the assignment.
 - Task status changes are limited to the three documented enum values. New tasks start as `OPEN` and are unassigned until a manager assigns them.
 - Passwords are stored with BCrypt. API responses never include stored password hashes.
-- The H2 database is in-memory by default for a self-contained assignment run. A persistent production deployment needs a durable database and a securely managed JWT secret.
+
 
