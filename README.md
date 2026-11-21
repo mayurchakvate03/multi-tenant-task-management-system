@@ -147,17 +147,6 @@ mvn clean verify sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.toke
 
 Coverage XML is generated before the Sonar goal and is configured at `target/site/jacoco/jacoco.xml`.
 
-## Container and deployment
-
-Build the application first, then build and run the image:
-
-```powershell
-mvn clean package -DskipTests
-docker build -t multi-tenant-task-management-system .
-docker run --rm -p 8080:8080 -e JWT_SECRET="<base64-secret>" multi-tenant-task-management-system
-```
-
-The container can be deployed to a Docker-compatible hosting service. No external deployment is configured in this project. The default in-memory database is intended for local evaluation and loses data on restart; choose a persistent database and configure credentials before using a hosted environment.
 
 ## Assumptions and design decisions
 
@@ -170,6 +159,3 @@ The container can be deployed to a Docker-compatible hosting service. No externa
 - Passwords are stored with BCrypt. API responses never include stored password hashes.
 - The H2 database is in-memory by default for a self-contained assignment run. A persistent production deployment needs a durable database and a securely managed JWT secret.
 
-## Assignment submission notes
-
-The assignment document also requests a GitHub upload and a five-minute project walkthrough video. This workspace contains the complete local project; no repository remote or personal video is configured here. Push this folder to the interview GitHub repository and record the walkthrough before submission.
